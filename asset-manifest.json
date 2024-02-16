@@ -1,13 +1,16 @@
 {
   "files": {
     "main.css": "/holywater-test/static/css/main.ca97ba2b.css",
-    "main.js": "/holywater-test/static/js/main.63d940fb.js",
+    "main.js": "/holywater-test/static/js/main.eee09509.js",
+    "static/media/checkmark.svg": "/holywater-test/static/media/checkmark.7dd1a888524a4d0a3a882be7b414f30a.svg",
+    "static/media/download.svg": "/holywater-test/static/media/download.0ab52a28ea9c0b115ceea3d431f520b6.svg",
     "index.html": "/holywater-test/index.html",
+    "static/media/arrow.svg": "/holywater-test/static/media/arrow.c860192f5bc62c119dee64de0927ffb5.svg",
     "main.ca97ba2b.css.map": "/holywater-test/static/css/main.ca97ba2b.css.map",
-    "main.63d940fb.js.map": "/holywater-test/static/js/main.63d940fb.js.map"
+    "main.eee09509.js.map": "/holywater-test/static/js/main.eee09509.js.map"
   },
   "entrypoints": [
     "static/css/main.ca97ba2b.css",
-    "static/js/main.63d940fb.js"
+    "static/js/main.eee09509.js"
   ]
 }

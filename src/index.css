@@ -21,6 +21,7 @@
 
     --textPrimary: #FFFFFF;
     --textSecondary: #C4C8CC;
+    --gradient: linear-gradient(45deg, var(--lightViolet) 0%, var(--pink) 40%, var(--barWhite) 100%);
 }
 
 body {

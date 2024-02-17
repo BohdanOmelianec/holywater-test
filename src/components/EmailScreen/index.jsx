@@ -4,7 +4,7 @@ import { Question, QuestionDescription } from "../shared/Question.styled";
 import { Grid, Input, InputBox, StyledMain, TitleArea } from "./Email.styled";
 import { useNavigate } from "react-router-dom";
 import QuizService from "../../service";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 function EmailScreen() {
@@ -50,9 +50,9 @@ function EmailScreen() {
                     {error && <div>{t('emailError')}</div>}
                 </InputBox>
                 <QuestionDescription sx={{"font-size": "12px"}}>
-                    {/* By continuing I agree with <span className="accent">Privacy policy</span> 
-                    and <span className="accent">Terms of use</span>. */}
-                    {t('emailAgreement')}
+                    <Trans i18nKey="emailAgreement">
+                        By continuing I agree with <span className="accent">Privacy policy</span> and <span className="accent">Terms of use</span>.
+                    </Trans>
                 </QuestionDescription>
             </StyledMain>
             <Button disabled={error || !email} type="submit" onClick={submit}>{t('nextButton')}</Button>

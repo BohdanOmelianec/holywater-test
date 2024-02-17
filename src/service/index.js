@@ -6,6 +6,7 @@ class QuizService {
   initQuiz = async () => {
     const dbData = await localforage.getItem("quizData");
     const email = await localforage.getItem("email");
+    const locale = await localforage.getItem("locale");
 
     if(dbData) {
       const curQuestion = dbData.find(q => q.answer === null);
@@ -14,6 +15,7 @@ class QuizService {
         currentQuestion: curQuestion?.number,
         questionsLength: dbData.length,
         email,
+        locale,
       }
 
     } else {
@@ -22,12 +24,14 @@ class QuizService {
         currentQuestion: 1,
         questionsLength: defaultData.length,
         email,
+        locale,
       }
     }
   }
 
-  changeQuizLanguage = async (data) => {
+  changeQuizLanguage = async (data, lng) => {
     await localforage.setItem("quizData", data);
+    await localforage.setItem("locale", lng);
   }
 
   getQuestion = async (num) => {

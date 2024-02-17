@@ -16,7 +16,7 @@ function App() {
     <I18nextProvider i18n={i18next}>
       <QuizProvider>
         <div className="App">
-          <Outlet />
+              <Outlet />
         </div>
       </QuizProvider>
     </I18nextProvider>

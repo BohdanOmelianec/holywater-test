@@ -6,6 +6,7 @@ import {
   Numbers,
   Progress,
 } from "./Header.styled";
+import arrow from "../../assets/arrow.svg";
 
 const Header = ({ questionsLength, activeQuestion, onPrevClick }) => {
 
@@ -14,7 +15,7 @@ const Header = ({ questionsLength, activeQuestion, onPrevClick }) => {
       <Counter>
         {activeQuestion > 1 && 
           <ArrowBox onClick={onPrevClick}>
-            <Arrow src="/arrow.svg" alt="arrow back" />
+            <Arrow src={arrow} alt="arrow back" />
           </ArrowBox>
         }
         <Numbers>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import QuizService from "../service";
+import { useTranslation } from "react-i18next";
 
 
 const defaultValues = {
@@ -19,11 +20,13 @@ const QuizProvider = ({ children }) => {
   const [activeQuestion, setActiveQuestion] = useState(1);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
   const quizService = new QuizService();
 
-  const getData = async () => {
-    const { currentQuestion, questionsLength, email } = await quizService.initQuiz();
-
+  const init = async () => {
+    const { currentQuestion, questionsLength, email, locale } = await quizService.initQuiz();
+    
+    i18n.changeLanguage(locale ?? 'en');
     setQuestionsLength(questionsLength);
     if(currentQuestion) {
       setActiveQuestion(currentQuestion);
@@ -36,7 +39,7 @@ const QuizProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    getData();
+    init();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -61,7 +64,7 @@ const QuizProvider = ({ children }) => {
 
   const reset = async () => {
     await quizService.resetQuiz();
-    await getData();
+    await init();
 }
 
 

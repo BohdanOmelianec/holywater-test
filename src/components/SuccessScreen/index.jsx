@@ -5,6 +5,8 @@ import { useContext } from "react";
 import { QuizContext } from "../../context/QuizProvider";
 import { useTranslation } from "react-i18next";
 import localforage from "localforage";
+import checkmark from "../../assets/checkmark.svg";
+import download from "../../assets/download.svg";
 
 
 function SuccessScreen() {
@@ -45,10 +47,10 @@ function SuccessScreen() {
                     <Title>{t('thankYou')}</Title>
                     <QuestionDescription>{t('thankYouMessage')}</QuestionDescription>
                 </TitleArea>
-                <Icon src="/checkmark.svg" alt="" />
+                <Icon src={checkmark} alt="" />
             </StyledMain>
             <Download onClick={downloadAnswers}>
-                <img src="/download.svg" alt="download icon" />
+                <img src={download} alt="download icon" />
                 <span>{t('downloadButton')}</span>
             </Download>
             <Button onClick={reset}>{t('retakeQuizButton')}</Button>

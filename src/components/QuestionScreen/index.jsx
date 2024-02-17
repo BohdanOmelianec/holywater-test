@@ -26,7 +26,7 @@ function QuestionScreen() {
     const changeLanguage = async (lng) => {
         i18n.changeLanguage(lng);
         const newData = i18n.getDataByLanguage(lng);
-        await quizService.changeQuizLanguage(newData.translation.quizData);
+        await quizService.changeQuizLanguage(newData.translation.quizData, lng);
       }
 
     const nextHandler = async () => {

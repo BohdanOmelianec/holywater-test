@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/holywater-test/static/css/main.ca97ba2b.css",
-    "main.js": "/holywater-test/static/js/main.eee09509.js",
-    "static/media/checkmark.svg": "/holywater-test/static/media/checkmark.7dd1a888524a4d0a3a882be7b414f30a.svg",
-    "static/media/download.svg": "/holywater-test/static/media/download.0ab52a28ea9c0b115ceea3d431f520b6.svg",
-    "index.html": "/holywater-test/index.html",
-    "static/media/arrow.svg": "/holywater-test/static/media/arrow.c860192f5bc62c119dee64de0927ffb5.svg",
-    "main.ca97ba2b.css.map": "/holywater-test/static/css/main.ca97ba2b.css.map",
-    "main.eee09509.js.map": "/holywater-test/static/js/main.eee09509.js.map"
+    "main.css": "/static/css/main.1c5da0de.css",
+    "main.js": "/static/js/main.392e1ab2.js",
+    "static/media/checkmark.svg": "/static/media/checkmark.7dd1a888524a4d0a3a882be7b414f30a.svg",
+    "static/media/download.svg": "/static/media/download.0ab52a28ea9c0b115ceea3d431f520b6.svg",
+    "index.html": "/index.html",
+    "static/media/arrow.svg": "/static/media/arrow.c860192f5bc62c119dee64de0927ffb5.svg",
+    "main.1c5da0de.css.map": "/static/css/main.1c5da0de.css.map",
+    "main.392e1ab2.js.map": "/static/js/main.392e1ab2.js.map"
   },
   "entrypoints": [
-    "static/css/main.ca97ba2b.css",
-    "static/js/main.eee09509.js"
+    "static/css/main.1c5da0de.css",
+    "static/js/main.392e1ab2.js"
   ]
 }

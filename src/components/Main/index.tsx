@@ -1,18 +1,34 @@
+import React, { ChangeEvent } from "react";
 import { QuestionArea, OptionsArea, Option, StyledMain, Checkbox } from "./Main.styled";
 import { Question, QuestionDescription } from "../shared/Question.styled";
+import { IQuestion } from "types";
 
-const LANGUAGE = {
+interface Props {
+  question: IQuestion,
+  answer: string[],
+  setAnswer: React.Dispatch<React.SetStateAction<string[]>>,
+  setLng: React.Dispatch<React.SetStateAction<string>>
+}
+
+interface ILanguage {
+  English: string, 
+  French: string, 
+  German: string, 
+  Spanish: string 
+}
+
+const LANGUAGE: ILanguage = {
   'English': "en", 
   "French": "fr", 
   "German": "de", 
   "Spanish": "es" 
 }
 
-const Main = ({ question, answer, setAnswer, setLng }) => {
+const Main = ({ question, answer, setAnswer, setLng }: Props) => {
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     if(question.number === 1) {
-      setLng(LANGUAGE[e.target.value]);
+      setLng(LANGUAGE[e.target.value as keyof ILanguage]);
     }
 
     switch (question.type) {

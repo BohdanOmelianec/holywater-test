@@ -7,7 +7,7 @@ export const Question = styled.h2`
     text-align: center;
 `;
 
-export const QuestionDescription = styled.p`
+export const QuestionDescription = styled.p<{ sx?: Record<string, string> }>`
     color: var(--textSecondary);
     font-weight: 400;
     font-size: 16px;

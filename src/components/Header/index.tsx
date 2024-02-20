@@ -8,7 +8,13 @@ import {
 } from "./Header.styled";
 import arrow from "../../assets/arrow.svg";
 
-const Header = ({ questionsLength, activeQuestion, onPrevClick }) => {
+interface Props {
+  questionsLength: number,
+  activeQuestion: number,
+  onPrevClick: () => void
+}
+
+const Header = ({ questionsLength, activeQuestion, onPrevClick }: Props) => {
 
   return (
     <StyledHeader>

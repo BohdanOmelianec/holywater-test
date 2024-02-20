@@ -1,8 +1,13 @@
 import { useRouteError } from "react-router-dom";
 import { Grid } from "./Error.styled";
 
+interface ErrorWithStatusText {
+  statusText?: string;
+  message?: string;
+}
+
 const ErrorScreen = () => {
-  const error = useRouteError();
+  const error = useRouteError() as ErrorWithStatusText;
   console.error(error);
 
   return (

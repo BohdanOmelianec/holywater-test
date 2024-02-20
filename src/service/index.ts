@@ -1,12 +1,20 @@
 import localforage from "localforage";
 import defaultData from "../resources/data.json";
+import { IQuestion } from "types";
+
+interface InitData {
+  currentQuestion: number,
+  questionsLength: number,
+  locale: string,
+  initRoute: string,
+}
 
 class QuizService {
     
-  initQuiz = async () => {
-    const dbData = await localforage.getItem("quizData");
-    const email = await localforage.getItem("email");
-    const locale = await localforage.getItem("locale");
+  initQuiz = async (): Promise<InitData> => {
+    const dbData = await localforage.getItem<IQuestion[]>("quizData");
+    const email = await localforage.getItem<string>("email");
+    const locale = await localforage.getItem<string>("locale");
 
     if(dbData) {
       const curQuestion = dbData.find(q => q.answer === null);
@@ -14,7 +22,6 @@ class QuizService {
       return {
         currentQuestion: curQuestion?.number ?? 1,
         questionsLength: dbData.length,
-        email,
         locale: locale ?? 'en',
         initRoute: curQuestion ? `quiz/${curQuestion.number}` : email ? '/success' : '/email',
       }
@@ -24,26 +31,25 @@ class QuizService {
       return {
         currentQuestion: 1,
         questionsLength: defaultData.length,
-        email,
         locale: locale ?? 'en',
         initRoute: 'quiz/1',
       }
     }
   }
 
-  changeQuizLanguage = async (data, lng) => {
+  changeQuizLanguage = async (data: string, lng: string) => {
     await localforage.setItem("quizData", data);
     await localforage.setItem("locale", lng);
   }
 
-  getQuestion = async (num) => {
-    const dbData = await localforage.getItem("quizData");
+  getQuestion = async (num: number): Promise<IQuestion | undefined> => {
+    const dbData = await localforage.getItem<IQuestion[]>("quizData");
     return dbData?.find(q => q.number === num);
   }
 
-  setAnswer = async (num, answer) => {
-    const dbData = await localforage.getItem("quizData");
-    const newData = dbData.map(q => {
+  setAnswer = async (num: number, answer: string[]) => {
+    const dbData = await localforage.getItem<IQuestion[]>("quizData");
+    const newData = dbData?.map(q => {
       if(q.number === num) {
         return {
           ...q,
@@ -56,7 +62,7 @@ class QuizService {
     await localforage.setItem("quizData", newData);
   }
 
-  setEmail = async (email) => {
+  setEmail = async (email: string) => {
     await localforage.setItem("email", email);
   }
 

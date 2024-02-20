@@ -9,12 +9,13 @@ import { QuizContext } from "../../context/QuizProvider";
 import LoadingScreen from "../LoadingScreen";
 import QuizService from "../../service";
 import { useTranslation } from 'react-i18next';
+import { IQuestion } from "types";
 
 
 function QuestionScreen() {
-    const [answer, setAnswer] = useState([]);
+    const [answer, setAnswer] = useState<string[]>([]);
     const [lng, setLng] = useState('en');
-    const { question, number } = useLoaderData();
+    const { question, number } = useLoaderData() as {question: IQuestion, number: number};
     const { questionsLength, onNextClick, onPrevClick, loading } = useContext(QuizContext);
     const { t, i18n } = useTranslation();
     const quizService = new QuizService();
@@ -23,10 +24,10 @@ function QuestionScreen() {
         setAnswer(question.answer ?? []);
     },[question])
 
-    const changeLanguage = async (lng) => {
+    const changeLanguage = async (lng: string) => {
         i18n.changeLanguage(lng);
         const newData = i18n.getDataByLanguage(lng);
-        await quizService.changeQuizLanguage(newData.translation.quizData, lng);
+        await quizService.changeQuizLanguage(newData!.translation.quizData, lng);
       }
 
     const nextHandler = async () => {

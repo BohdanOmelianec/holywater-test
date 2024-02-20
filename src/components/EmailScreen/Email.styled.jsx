@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const Grid = styled.div`
+export const Grid = styled.form`
     display: grid;
     grid-template-rows: 596px 96px;
     align-items: center;

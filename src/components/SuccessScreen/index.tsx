@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import localforage from "localforage";
 import checkmark from "../../assets/checkmark.svg";
 import download from "../../assets/download.svg";
+import { IQuestion } from "types";
 
 
 function SuccessScreen() {
@@ -14,7 +15,7 @@ function SuccessScreen() {
     const { t } = useTranslation();
 
     const downloadAnswers = async () => {
-        const quizData = await localforage.getItem('quizData');
+        const quizData = await localforage.getItem<IQuestion[]>('quizData');
         if (!quizData || quizData.length === 0) {
           console.log('No data to download');
           return;

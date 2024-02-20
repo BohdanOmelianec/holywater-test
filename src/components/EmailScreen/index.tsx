@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Button } from "../shared/Button.styled";
 import { Question, QuestionDescription } from "../shared/Question.styled";
 import { Grid, Input, InputBox, StyledMain, TitleArea } from "./Email.styled";
@@ -14,13 +14,13 @@ function EmailScreen() {
     const { t } = useTranslation();
     const quizService = new QuizService();
 
-    const inputHandler = (e) => {
+    const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setError(false);
         const value = e.target.value;
         setEmail(value);
     }
 
-    const submit = async (e) => {
+    const submit = async (e: FormEvent) => {
         e.preventDefault();
         const isValid = pattern.test(email);
 
@@ -33,7 +33,7 @@ function EmailScreen() {
     }
 
     return (
-        <Grid>
+        <Grid onSubmit={submit}>
             <StyledMain>
                 <TitleArea>
                     <Question>{t('email')}</Question>
@@ -55,7 +55,7 @@ function EmailScreen() {
                     </Trans>
                 </QuestionDescription>
             </StyledMain>
-            <Button disabled={error || !email} type="submit" onClick={submit}>{t('nextButton')}</Button>
+            <Button disabled={error || !email} type="submit">{t('nextButton')}</Button>
         </Grid>
     );
 }

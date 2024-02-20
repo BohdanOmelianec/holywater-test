@@ -4,7 +4,17 @@ import QuizService from "../service";
 import { useTranslation } from "react-i18next";
 
 
-const defaultValues = {
+interface DefaultValues  {
+  activeQuestion: number,
+  questionsLength: number,
+  onNextClick: () => void,
+  onPrevClick: () => void,
+  loading: boolean,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  reset: () => void,
+}
+
+const defaultValues: DefaultValues = {
   activeQuestion: 1,
   questionsLength: 0,
   onNextClick: () => {},
@@ -15,7 +25,7 @@ const defaultValues = {
 }
 export const QuizContext = createContext(defaultValues);
 
-const QuizProvider = ({ children }) => {
+const QuizProvider = ({ children }: React.PropsWithChildren) => {
   const [questionsLength, setQuestionsLength] = useState(1);
   const [activeQuestion, setActiveQuestion] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -25,7 +35,7 @@ const QuizProvider = ({ children }) => {
 
   const init = async () => {
     const { currentQuestion, questionsLength, locale, initRoute } = await quizService.initQuiz();
-    console.log(initRoute)
+
     i18n.changeLanguage(locale);
     setQuestionsLength(questionsLength);
     setActiveQuestion(currentQuestion);

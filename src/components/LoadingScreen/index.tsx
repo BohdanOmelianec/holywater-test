@@ -29,7 +29,7 @@ const LoadingScreen = () => {
     };
   }, [progress, setLoading, navigate])
 
-  const width = 252;
+  const width: number = 252;
   const height = width;
   const strokeWidth = 10;
   const radius = (width - strokeWidth) / 2;

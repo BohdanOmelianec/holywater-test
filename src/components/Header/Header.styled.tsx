@@ -47,7 +47,7 @@ export const Arrow = styled.img`
     height: 13px;
 `;
 
-export const Progress = styled.div`
+export const Progress = styled.div<{ $bg?: string, $width?: string }>`
     width: ${props => props.$width || "100%"};
     height: 4px;
     position: relative;

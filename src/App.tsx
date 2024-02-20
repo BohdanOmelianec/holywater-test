@@ -6,7 +6,6 @@ import translations from './resources/translation.json';
 import { GitHubLink } from "./components/shared/GitHubLink.styled";
 
 i18next.use(initReactI18next).init({
-  
   interpolation: { escapeValue: false },
   lng: 'en',
   resources: translations

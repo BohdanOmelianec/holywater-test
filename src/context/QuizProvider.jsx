@@ -24,18 +24,12 @@ const QuizProvider = ({ children }) => {
   const quizService = new QuizService();
 
   const init = async () => {
-    const { currentQuestion, questionsLength, email, locale } = await quizService.initQuiz();
-    
-    i18n.changeLanguage(locale ?? 'en');
+    const { currentQuestion, questionsLength, locale, initRoute } = await quizService.initQuiz();
+    console.log(initRoute)
+    i18n.changeLanguage(locale);
     setQuestionsLength(questionsLength);
-    if(currentQuestion) {
-      setActiveQuestion(currentQuestion);
-      navigate(`/quiz/${currentQuestion}`);
-    } else if(email) {
-      navigate(`/success`);
-    } else {
-      navigate(`/email`);
-    }
+    setActiveQuestion(currentQuestion);
+    navigate(initRoute);
   }
 
   useEffect(() => {

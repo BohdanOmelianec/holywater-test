@@ -12,10 +12,11 @@ class QuizService {
       const curQuestion = dbData.find(q => q.answer === null);
 
       return {
-        currentQuestion: curQuestion?.number,
+        currentQuestion: curQuestion?.number ?? 1,
         questionsLength: dbData.length,
         email,
-        locale,
+        locale: locale ?? 'en',
+        initRoute: curQuestion ? `quiz/${curQuestion.number}` : email ? '/success' : '/email',
       }
 
     } else {
@@ -24,7 +25,8 @@ class QuizService {
         currentQuestion: 1,
         questionsLength: defaultData.length,
         email,
-        locale,
+        locale: locale ?? 'en',
+        initRoute: 'quiz/1',
       }
     }
   }
